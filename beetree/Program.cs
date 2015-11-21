@@ -6,8 +6,38 @@ namespace beetree
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("B tree by perryizgr8");
-            Console.ReadKey(true);
+            int degree = 0;
+            Btrie<int, IntPtr> Trie;
+            string input;
+            Console.WriteLine("Degree?");
+            input = Console.ReadLine();
+            Int32.TryParse(input, out degree);
+            Console.WriteLine("Creating a B tree of degree {0:0}...", degree);
+            try
+            {
+                Trie = new Btrie<int, IntPtr>(degree);
+            }
+            catch(ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Trie not created.");
+            }
+            Console.WriteLine("Done.");
+            Console.ReadKey();
+        }
+    }
+    class Btrie<A, B>
+    {
+        Node<A, B> rootNode;
+        int degree;
+        public Btrie(int degree)
+        {
+            if (degree < 2)
+            {
+                throw new System.ArgumentOutOfRangeException("degree", "Degree must be at least 2.");
+            }
+            this.degree = degree;
+            rootNode = new Node<A, B>();
         }
     }
     class Node<A, B>
@@ -29,20 +59,6 @@ namespace beetree
                 return true;
             else
                 return false;
-        }
-    }
-    class Btrie<A, B>
-    {
-        Node<A, B> rootNode;
-        int degree;
-        public Btrie(int degree)
-        {
-            if(degree < 2)
-            {
-                throw new System.ArgumentOutOfRangeException("degree", "Degree must be at least 2.");
-            }
-            this.degree = degree;
-            rootNode = new Node<A, B>();
         }
     }
 }
