@@ -39,19 +39,48 @@ namespace beetree
             this.degree = degree;
             rootNode = new Node<A, B>();
         }
+        public void Insert(A newKey, B newPointer)
+        {
+            // TODO write function to insert key
+        }
+        public void Search(A key)
+        {
+            // TODO wite binary search
+        }
+        public void Remove(A key)
+        {
+            // TODO write remove algorithm
+        }
+    }
+    class SuperNode<A>
+    {
+        public int Key;
+        public A Value;
+    }
+
+    class Parikshit
+    {
+        int sthi;
+        int fuck;
+        int asdf;
+        int jkl;
+        int sthi1;
+        int fuck1;
+        int asdf1;
+        int jkl1;
     }
     class Node<A, B>
     {
-        List<KeyValuePair<int, IntPtr>> Keys;
+        SuperNode<Parikshit>[] Keys;
         List<Node<A, B>> Children;
         public Node()
         {
-            Keys = new List<KeyValuePair<int, IntPtr>>();
+            Keys = new SuperNode<Parikshit>[1000000];
             Children = new List<Node<A, B>>();
         }
         public int getNumberOfKeys()
         {
-            return Keys.Count;
+            return Keys.Length;
         }
         public bool isLeaf()
         {
